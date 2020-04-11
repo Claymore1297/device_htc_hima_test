@@ -30,6 +30,11 @@
         android:title="@string/fastcharge_title"
         android:icon="@drawable/ic_fastcharge"
         android:defaultValue="true"/>
+    <SwitchPreference
+        android:key="writefile"
+        android:summary="@string/writefile_summary"
+        android:title="@string/writefile_title"
+        android:icon="@drawable/ic_fastcharge" />
 
     <PreferenceCategory
         android:title="@string/category_backlight_dimmer">

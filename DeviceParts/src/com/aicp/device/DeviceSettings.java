@@ -27,12 +27,14 @@ public class DeviceSettings extends PreferenceFragment implements
 
     public static final String KEY_VIBSTRENGTH = "vib_strength";
     public static final String KEY_FASTCHARGE = "fastcharge";
+    public static final String KEY_WRITEFILE = "writefile";
     public static final String KEY_BACKLIGHT_DIMMER = "backlight_dimmer";
     public static final String KEY_HEADPHONE_GAIN = "headphone_gain";
     public static final String KEY_SETTINGS_PREFIX = "device_setting_";
 
     private VibratorStrengthPreference mVibratorStrength;
     private static TwoStatePreference mFastChargeSwitch;
+    private static TwoStatePreference mWriteFile;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -47,6 +49,9 @@ public class DeviceSettings extends PreferenceFragment implements
         mFastChargeSwitch.setEnabled(FastChargeSwitch.isSupported());
         mFastChargeSwitch.setChecked(FastChargeSwitch.isCurrentlyEnabled(this.getContext()));
         mFastChargeSwitch.setOnPreferenceChangeListener(new FastChargeSwitch(getContext()));
+ 
+        mWriteFile = (TwoStatePreference) findPreference(KEY_WRITEFILE);
+        mWriteFile.setOnPreferenceChangeListener(new WriteFile(getContext()));
     }
 
     @Override
